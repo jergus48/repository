@@ -1,0 +1,144 @@
+
+
+
+run=True
+
+
+
+
+
+#p=zamestnanec aj zamestnavatel rovnake
+#z=zamestanec
+#=zametnavatel
+
+
+
+def zamestnanec():
+
+
+    global run
+
+
+    global nczd
+
+
+    global danprijmu
+
+    try:
+        hruba = float(input("tvoja hruba mesacna mzda:"))
+        detinad = int(input("pocet deti nad rokov:"))
+        detipod = int(input("pocet deti pod 6 rokov:"))
+        nczd = input("uplatnujes nczd(ano/nie)")
+    except ValueError:
+        zamestnanec()
+
+    zdravotnez = hruba * 0.04
+    zdravotnel=hruba*0.1
+    danprijmu = 0
+    nemocenskep = hruba * 0.014
+    starobnez = hruba * 0.04
+    starobnel= hruba*0.14
+
+
+    invalidnep = 0.03 * hruba
+    nezamestnanostp = hruba * 0.01
+    garancnyz = hruba * 0
+    garancnyl=hruba*0.0025
+
+    rezervnyz = hruba * 0
+    rezervnyl= hruba*0.0475
+
+    urazovez = hruba * 0
+    urazovel= hruba*0.008
+
+    socialnez = hruba * 0.094
+    socialnel=hruba*0.252
+
+    odvodyz = 0.134 * hruba
+    odvodyl=hruba*0.352
+
+
+    danprijmu = 0
+    print("")
+    print("   _zamestnanec_ ",("\U0001f600"))
+    print("")
+    print("zdravotne poistenie:")
+    print("vymeriavaci zaklad:   ",hruba, "€")
+    print("zdravotne poistenie spolu(4%):",round(zdravotnez,2), "€")
+    print("socialne poistenie:")
+    print("vymeriavaci zaklad:   ", round(hruba,2), "€")
+    print("nemocenske poistenie(1,4%):",round(nemocenskep,2), "€")
+    print("starobne poistenie(4%):",round(starobnez,2), "€")
+    print("invalidne poistenie(3%):",round(invalidnep,2), "€")
+    print("poistenie v nezamestnanosti(1%):",round(nezamestnanostp,2), "€")
+
+    print("socialne poistenie spolu(9,4%)",round(socialnez,2), "€")
+    print("")
+    print("odvody spolu(13,4%):",round(odvodyz,2), "€")
+    print("dan z prijmu:")
+    print("mesacny zaklad dane:",round(hruba-odvodyz,2), "€")
+    if nczd == "ano":
+        nczd=375.95
+    elif nczd == "nie":
+        nczd=0
+    print("mesacna nezdanitelna cast zakladu dane:",nczd, "€")
+    print("mesacny zaklad dane pred danenim:",round(hruba - odvodyz-nczd,2), "€")
+    if (hruba - odvodyz - nczd)<= 3000:
+        danprijmu=(hruba-nczd-odvodyz)*0.19
+        print("dan z prijmu:",round((hruba-nczd-odvodyz)*0.19,2), "€")
+    elif (hruba-nczd-odvodyz) > 3000:
+        danprijmu=round(((hruba-odvodyz-nczd-3000)*0.25)+(3000*0.19),2)
+        print("dan z prijmu(19%/25%):",round(danprijmu,2), "€")
+    print("bonus:")
+    print("Daňový bonus na dieťa do 6 rokov:",detipod*46.44, "€")
+    print("Daňový bonus na dieťa nad 6 rokov:",detinad*23.22, "€")
+    print("")
+    print("cista mesacna mzda:",round(hruba-odvodyz-danprijmu+detipod*46.44+detinad*23.22,2), "€")
+    print("")
+    print("   _zamestnavatel_   ",("\U0001F923"))
+    print("")
+    print("zdravotne poistenie:")
+    print("vymeriavaci zaklad:   ", hruba, "€")
+    print("zdravotne poistenie spolu(10%):", round(zdravotnel, 2), "€")
+    print("socialne poistenie:")
+    print("vymeriavaci zaklad:   ", round(hruba, 2), "€")
+    print("nemocenske poistenie(1,4%):", round(nemocenskep, 2), "€")
+    print("starobne poistenie(14%):", round(starobnel, 2), "€")
+    print("invalidne poistenie(3%):", round(invalidnep, 2), "€")
+    print("poistenie v nezamestnanosti(1%):", round(nezamestnanostp, 2), "€")
+    print("garancny fond(0,25%):", round(garancnyl, 2), "€")
+    print("rezervny fond(4,75%):", round(rezervnyl, 2), "€")
+    print("urazove poistenie(0,8%):", round(urazovel, 2), "€")
+    print("socialne poistenie spolu(25,2%)", round(socialnel, 2), "€")
+    print("")
+    print("odvody spolu(35,2%):", round(odvodyl, 2), "€")
+    print("mzdove naklady zamestnavatela na zamestnanca:",hruba+odvodyl, "€")
+    print("")
+
+    x=input("chces program znova prehrat?(ano/nie)")
+    if x == "ano":
+            run = True
+    else:
+        run= False
+    while run == True:
+        zamestnanec()
+
+
+
+
+zamestnanec()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
