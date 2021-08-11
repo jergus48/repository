@@ -556,7 +556,7 @@ def returner():
     elif first == "a2":
         board[6] = " - "
 
-    elif first == "b":
+    elif first == "b2":
         board[7] = " - "
 
     elif first == "c2":
