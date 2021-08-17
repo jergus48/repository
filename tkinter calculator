@@ -1,0 +1,110 @@
+from tkinter import *
+
+
+root=Tk()
+
+root.title("calculator")
+global x
+x=0
+e=Entry(root,width=18,borderwidth=5,)
+e.grid(row=0,rowspan=2,column=0,columnspan=4)
+
+def end():
+    root.quit()
+def click(number):
+    before=e.get()
+    e.delete(0,END)
+    e.insert(0,str(before)+str(number))
+def clickplus ():
+    global a
+    global x
+    x=1
+    a=e.get()
+    e.delete(0,END)
+def minus():
+    global x
+    global a
+    x=2
+    a=e.get()
+    e.delete(0,END)
+
+def times():
+    global a
+    global x
+    a=e.get()
+    e.delete(0,END)
+    x=3
+def devides():
+    global a
+    global x
+    a=e.get()
+    e.delete(0,END)
+    x=4
+
+def clear():
+    e.delete(0,END)
+def ciarka():
+    dostane=e.get()
+    e.delete(0,END)
+    e.insert(0,str(dostane)+str("."))
+
+def equal():
+    try:
+        global c
+
+        b=e.get()
+        e.delete(0,END)
+        if x==1:
+            e.insert(0,float(a)+ float(b))
+        elif x==2:
+            e.insert(0,float(a)-float(b))
+        elif x == 3:
+            e.insert(0,float(a)*float(b))
+        elif x == 4:
+            e.insert(0,float(a)/float(b))
+    except ValueError:
+        clear()
+
+
+button1=Button(root,text= " 1 ",bg="gray", command = lambda: click(1),padx=5,pady=2)
+button2=Button(root,text= " 2 ",bg="gray", command = lambda: click(2),padx=6,pady=2)
+button3=Button(root,text= " 3 ",bg="gray", command = lambda: click(3),padx=5,pady=2)
+button4=Button(root,text= " 4 ",bg="gray", command = lambda: click(4),padx=5,pady=2)
+button5=Button(root,text= " 5 ",bg="gray", command = lambda: click(5),padx=6,pady=2)
+button6=Button(root,text= " 6 ",bg="gray", command = lambda: click(6),padx=5,pady=2)
+button7=Button(root,text= " 7 ",bg="gray", command = lambda: click(7),padx=5,pady=2)
+button8=Button(root,text= " 8 ",bg="gray", command = lambda: click(8),padx=6,pady=2)
+button9=Button(root,text= " 9 ",bg="gray", command = lambda: click(9),padx=5,pady=2)
+button0=Button(root,text= " 0 ", command = lambda: click(0),pady=2,padx=22,bg="gray")
+buttonplus=Button(root,text=" + ",command=clickplus,padx=5,pady=2,bg="chocolate1")
+buttonminus=Button(root,text=" - ",command=minus,padx=7,pady=2,bg="chocolate1")
+buttontimes=Button(root,text=" x ",command=times,padx=6,pady=2,bg="chocolate1")
+buttondevides=Button(root,text=" / ",command=devides,padx=6,pady=2,bg="chocolate1")
+buttonclear=Button(root,text=" C ",fg="red2",command=clear,padx=5,pady=2,bg="gray10")
+buttonequals=Button(root,text=" = ",command=equal,pady=16,padx=5,bg="chocolate1")
+buttonciarka=Button(root,text=" , ",padx=7,pady=2,bg="gray",command=ciarka)
+buttonend=Button(root,text="END",bg="gray10",fg="red2",command=end)
+
+button1.grid(row=5 ,column=0,)
+button2.grid(row= 5,column=1)
+button3.grid(row=5 ,column=2)
+button4.grid(row=4 ,column=0)
+button5.grid(row=4 ,column=1)
+button6.grid(row= 4,column=2)
+button7.grid(row=3 ,column=0)
+button8.grid(row= 3,column=1)
+button9.grid(row=3 ,column=2)
+button0.grid(row=6,column=0,columnspan=2)
+buttonplus.grid(row=4, column=3)
+buttonminus.grid(row=3,column=3)
+buttontimes.grid(row=2,column=3)
+buttondevides.grid(row=2,column=2)
+buttonclear.grid(row=2,column=0)
+buttonequals.grid(row=5,column=3,rowspan=2)
+buttonciarka.grid(row=6,column=2)
+buttonend.grid(row=2,column=1,)
+
+
+
+
+root.mainloop()
