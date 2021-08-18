@@ -10,6 +10,7 @@ def framex():
 
     global label
     global count
+    global clicked
     label=Label(root,text="x won, NEW GAME",padx=50,pady=50,bg="black",fg="snow")
     label.grid(row=0,column=0,columnspan=4)
     label.after(2500, label.destroy)
@@ -24,9 +25,11 @@ def framex():
     button8["text"]="  "
     button9["text"]="  "
     count=0
+    clicked=True
 def frameo():
     global label1
     global count
+    global clicked
     label1=Label(root,text="o won, NEW GAME",padx=50,pady=50,bg="black",fg="snow")
     label1.grid(row=0,column=0,columnspan=4)
     label1.after(2500,label1.destroy)
@@ -41,9 +44,11 @@ def frameo():
     button7["text"]="  "
     button8["text"]="  "
     button9["text"]="  "
+    clicked=True
 def framedraw():
     global label2
     global count
+    global clicked
     label2=Label(root,text=" Draw, NEW GAME",padx=50,pady=50,bg="black",fg="snow")
     label2.grid(row=0,column=0,columnspan=4)
     label2.after(2500,label2.destroy)
@@ -58,6 +63,7 @@ def framedraw():
     button8["text"]="  "
     button9["text"]="  "
     count=0
+    clicked=True
 def winner():
     if "X" == button1["text"] == button2["text"] == button3["text"]:
         framex()
