@@ -2,7 +2,7 @@ from tkinter import *
 root=Tk()
 
 playerx=0
-playerO=0
+playero=0
 count=0
 
 clicked=True
@@ -11,39 +11,43 @@ def framex():
     global label
     global count
     global clicked
+    global playerx
     label=Label(root,text="x won, NEW GAME",padx=50,pady=50,bg="black",fg="snow")
     label.grid(row=0,column=0,columnspan=4)
     label.after(2500, label.destroy)
 
-    button1["text"]="  "
-    button2["text"]="  "
-    button3["text"]="  "
-    button4["text"]="  "
-    button5["text"]="  "
-    button6["text"]="  "
-    button7["text"]="  "
-    button8["text"]="  "
-    button9["text"]="  "
+    button1["text"]="   "
+    button2["text"]="   "
+    button3["text"]="   "
+    button4["text"]="   "
+    button5["text"]="   "
+    button6["text"]="   "
+    button7["text"]="   "
+    button8["text"]="   "
+    button9["text"]="   "
+    playerx+=1
     count=0
     clicked=True
 def frameo():
     global label1
     global count
     global clicked
+    global playero
     label1=Label(root,text="o won, NEW GAME",padx=50,pady=50,bg="black",fg="snow")
     label1.grid(row=0,column=0,columnspan=4)
     label1.after(2500,label1.destroy)
     count=0
 
-    button1["text"]="  "
-    button2["text"]="  "
-    button3["text"]="  "
-    button4["text"]="  "
-    button5["text"]="  "
-    button6["text"]="  "
-    button7["text"]="  "
-    button8["text"]="  "
-    button9["text"]="  "
+    button1["text"]="   "
+    button2["text"]="   "
+    button3["text"]="   "
+    button4["text"]="   "
+    button5["text"]="   "
+    button6["text"]="   "
+    button7["text"]="   "
+    button8["text"]="   "
+    button9["text"]="   "
+    playero+=1
     clicked=True
 def framedraw():
     global label2
@@ -53,15 +57,15 @@ def framedraw():
     label2.grid(row=0,column=0,columnspan=4)
     label2.after(2500,label2.destroy)
 
-    button1["text"]="  "
-    button2["text"]="  "
-    button3["text"]="  "
-    button4["text"]="  "
-    button5["text"]="  "
-    button6["text"]="  "
-    button7["text"]="  "
-    button8["text"]="  "
-    button9["text"]="  "
+    button1["text"]="   "
+    button2["text"]="   "
+    button3["text"]="   "
+    button4["text"]="   "
+    button5["text"]="   "
+    button6["text"]="   "
+    button7["text"]="   "
+    button8["text"]="   "
+    button9["text"]="   "
     count=0
     clicked=True
 def winner():
@@ -105,33 +109,51 @@ def winner():
 def click(button):
     global count
     global clicked
-    if button["text"]=="  " and clicked==True:
+    if button["text"]=="   " and clicked==True:
         button["text"]="X"
         count+=1
         clicked=False
         winner()
-    elif button["text"]=="  " and clicked==False:
+    elif button["text"]=="   " and clicked==False:
         button["text"] = "O"
         count += 1
         clicked=True
         winner()
 
 
+def end():
+    global label3
+    global label4
+    button1.destroy()
+    button2.destroy()
+    button3.destroy()
+    button4.destroy()
+    button5.destroy()
+    button6.destroy()
+    button7.destroy()
+    button8.destroy()
+    button9.destroy()
+    label3 = Label(root, text="playerx="+str(playerx), padx=50, pady=5, bg="black", fg="snow")
+    label3.grid(row=5, column=0,)
+    label4 = Label(root, text="playero=" + str(playero), padx=50, pady=5, bg="black", fg="snow")
+    label4.grid(row=6, column=0, )
+    label.after(2500,root.quit)
+
 
 
 
 label=Label(root,text="TIC TAC TOE",bg="blue2",fg="snow",bd=4,relief=SUNKEN,width=15)
-button1=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button1))
-button2=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button2))
-button3=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button3))
-button4=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button4))
-button5=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button5))
-button6=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button6))
-button7=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button7))
-button8=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button8))
-button9=Button(root,text="  ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button9))
+button1=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button1))
+button2=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button2))
+button3=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button3))
+button4=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button4))
+button5=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button5))
+button6=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button6))
+button7=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button7))
+button8=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button8))
+button9=Button(root,text="   ",bg="gray",fg="red",padx=25,pady=10,bd=2,command= lambda: click(button9))
 frame=Frame(root,height=10)
-
+buttonend=Button(root,text="end",bg="blue",fg="red",command=end)
 firstplayer=0
 secondplayer=0
 
@@ -146,7 +168,7 @@ secondplayer=0
 
 
 
-
+buttonend.grid(row=0,column=2)
 label.grid(row= 0, column=0,columnspan=5)
 button1.grid(row= 5, column=0,columnspan=1)
 button2.grid(row= 5, column=1,columnspan=1)
