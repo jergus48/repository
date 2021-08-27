@@ -118,7 +118,6 @@ def mainloop():
             yellowscore += 1
             if ball in balls:
                balls.remove(ball)
-            yellowscore+=1
         if (ball.x-10)< 0 or ((ball.x+15)>WIDTH and ball.y<-55) or ((ball.x+15)>WIDTH and ball.y>550):
             redscore+=1
             if ball in balls:
