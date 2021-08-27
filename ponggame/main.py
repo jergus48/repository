@@ -54,7 +54,7 @@ def draw_window(yellow,red,balls,redscore,yellowscore):
     WIN.blit(red_palka, (red.x, red.y))
 
     for ball in balls:
-        pygame.draw.rect(WIN, white, ball)
+        pygame.draw.ellipse(WIN, white, ball)
 
     pygame.display.update()
 
@@ -109,24 +109,30 @@ def mainloop():
                 pygame.quit()
 
         if len(balls)<MAX_BALLS:
-            ball=pygame.Rect(450-10, 500-20, 10,10)
+            ball=pygame.Rect(450-15, 500-25, 15,15)
             balls.append(ball)
         ball.x-=ballspeedx
         ball.y-=ballspeedy
 
-        if (ball.x+10)>WIDTH or ((ball.x+10)>WIDTH and ball.y<-50) or ((ball.x+10)>WIDTH and ball.y>550):
+        if (ball.x+15)>WIDTH or ((ball.x+15)>WIDTH and ball.y<-55) or ((ball.x+15)>WIDTH and ball.y>550):
             yellowscore += 1
             if ball in balls:
                balls.remove(ball)
             yellowscore+=1
-        if (ball.x-10)< 0 or ((ball.x+10)>WIDTH and ball.y<-50) or ((ball.x+10)>WIDTH and ball.y>550):
+        if (ball.x-10)< 0 or ((ball.x+15)>WIDTH and ball.y<-55) or ((ball.x+15)>WIDTH and ball.y>550):
             redscore+=1
             if ball in balls:
                 balls.remove(ball)
-        if (ball.y +20)== 0 or (ball.y+10+5) ==500:
+        if (ball.y +25)== 0 or (ball.y+15+5) ==500:
             ballspeedy*= -1
         if ball.colliderect(yellow) or ball.colliderect(red):
             ballspeedx*=-1
+
+
+
+
+
+
 
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_SPACE]:
