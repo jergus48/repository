@@ -32,7 +32,8 @@ red_palka = pygame.transform.scale(
     red_palka_IMAGE, (palka_WIDTH, palka_HEIGHT))
 
 VEL=5
-
+print("space=10 second pause")
+print("r=restart")
 
 scorefont=pygame.font.SysFont('comicsans', 40)
 
@@ -80,12 +81,16 @@ def pause():
     time.sleep(x)
 
 
+def reset():
+    pygame.mixer.stop()
+    mainloop()
 
-
-
+    return redhotu
+def hudba():
+    redhotu.play()
 
 def mainloop():
-    redhotu.play()
+    hudba()
     yellow = pygame.Rect(50, 200, palka_WIDTH, palka_HEIGHT)
     red = pygame.Rect(825, 200, palka_WIDTH, palka_HEIGHT)
     yellowscore=0
@@ -94,9 +99,8 @@ def mainloop():
     ballspeedy=5
     ballspeedx=5
     clock = pygame.time.Clock()
-    run2=True
     run = True
-    print("space=10 second pause")
+
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
@@ -124,16 +128,12 @@ def mainloop():
         if ball.colliderect(yellow) or ball.colliderect(red):
             ballspeedx*=-1
 
-
-
-
-
-
-
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_SPACE]:
 
             pause()
+        if keys_pressed[pygame.K_r]:
+            reset()
 
 
 
