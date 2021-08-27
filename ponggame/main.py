@@ -18,7 +18,7 @@ background= pygame.transform.scale(pygame.image.load(
 black=(0,0,0)
 white=(255,255,255)
 
-palka_WIDTH, palka_HEIGHT = 14, 75
+palka_WIDTH, palka_HEIGHT = 13, 75
 
 YELLOW_palka_IMAGE = pygame.image.load(
     os.path.join('Assets', 'a.png'))
