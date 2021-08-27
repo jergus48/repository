@@ -85,7 +85,7 @@ def reset():
     pygame.mixer.stop()
     mainloop()
 
-    return redhotu
+    
 def hudba():
     redhotu.play()
 
