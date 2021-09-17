@@ -69,7 +69,7 @@ def drawwindow(pacman,pac,ghost,ghost1,count1,ghost2,count2,count3,ghost3,food1_
     WIN.blit(background,(0,0))
     score_text = scorefont.render(
         "Score: " + str(score), 1, yellow)
-    WIN.blit(score_text, (410, 380))
+    WIN.blit(score_text, (415, 380))
 
     WIN.blit(pac, (pacman.x, pacman.y))
     if food1_1== True:
