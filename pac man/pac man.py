@@ -55,6 +55,23 @@ def newgame(score):
             "Score: " + str(score), 1, white)
         WIN.blit(score_text, (5, 10))
         pygame.display.update()
+
+
+def won(score):
+    WIN.blit(back, (0, 0))
+    score_text2 = scorefont.render(
+        "Try again", 1, white)
+    WIN.blit(score_text2, (90, 80))
+    score_text2 = scorefont.render(
+        "Press r to restart", 1, white)
+    WIN.blit(score_text2, (30, 115))
+    score_text = scorefont.render(
+        "Score: " + str(score), 1, white)
+    WIN.blit(score_text, (5, 10))
+    score_text = scorefont.render(
+        "Winner", 1, white)
+    WIN.blit(score_text, (400, 400))
+    pygame.display.update()
 def drawwindow(pacman,pac,ghost,ghost1,count1,ghost2,count2,count3,ghost3,food1_1,food1_2,food1_3,food1_4,
         food1_5,food1_6,food1_10,food1_11,food1_12,food1_13,food1_14,
         food1_15,food2_1,food2_4,food2_6,food2_8,food2_10,food2_12,food2_15,food3_1,food3_2,food3_3,food3_4,
@@ -464,8 +481,10 @@ def mainloop():
                 mainloop()
         if count4<=399:
             count4+=1
-        if gamerun==False:
+        if gamerun==False and score<=106:
             newgame(score)
+        if gamerun==False and score>=106:
+            won(score)
         elif gamerun==True:
             if count4>=201:
                 if keys_pressed[pygame.K_d]:
@@ -899,7 +918,7 @@ def mainloop():
         if score==106:
 
             gamerun = False
-            newgame(score)
+            won(score)
 
         if gamerun==True:
             drawwindow(pacman,pac,ghost,ghost1,count1,ghost2,count2,count3,ghost3,food1_1,food1_2,food1_3,food1_4,
