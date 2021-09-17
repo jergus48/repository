@@ -800,7 +800,7 @@ def mainloop():
                         run4 = 3
                 if run4 == 3:
                     ghost3.y-=speed
-                    if ghost3.y<=280:
+                    if ghost3.y<=270:
                         run4=4
                 if run4 == 4:
                     ghost3.y +=speed
