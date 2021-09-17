@@ -896,7 +896,7 @@ def mainloop():
 
             gamerun = False
 
-        if score==114:
+        if score==106:
 
             gamerun = False
             newgame(score)
