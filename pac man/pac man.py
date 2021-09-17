@@ -462,7 +462,7 @@ def mainloop():
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_r]:
                 mainloop()
-        if count4<=199:
+        if count4<=399:
             count4+=1
         if gamerun==False:
             newgame(score)
@@ -1249,15 +1249,15 @@ def mainloop():
 
 
 
-        if count4 == 40:
-            print("1")
         if count4 == 80:
-            print("2")
-        if count4 == 120:
-            print("3")
+            print("1")
         if count4 == 160:
+            print("2")
+        if count4 == 240:
+            print("3")
+        if count4 == 320:
             print("4")
-        if count4 == 200:
+        if count4 == 400:
             print("start")
             count4+=1
 
