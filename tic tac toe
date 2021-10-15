@@ -1,4 +1,3 @@
-
 winner=0
 
 board= ["-","-","-",
@@ -12,7 +11,7 @@ def firstBoard():
     print(firstboard[0] + " | " + firstboard[1] + " | " + firstboard[2])
     print(firstboard[3] + " | " + firstboard[4] + " | " + firstboard[5])
     print(firstboard[6] + " | " + firstboard[7] + " | " + firstboard[8])
-print(firstBoard())
+firstBoard()
 
 print("if you will choose the position that has already been taken, the game turns off")
 
@@ -20,7 +19,7 @@ def displayBoard():
     print(board[0] + " | " + board[1] + " | " + board[2])
     print(board[3] + " | " + board[4] + " | " + board[5])
     print(board[6] + " | " + board[7] + " | " + board[8])
-print(displayBoard())
+displayBoard()
 
 v =["1","2","3","4","5","6","7","8","9"]
 
@@ -110,11 +109,11 @@ while True:
         break
     elif position == "1" and board[0] == "-":
         board[0] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     elif position == "2" and board[1] == "-":
         board[1] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     elif position == "3" and board[2] == "-":
         board[2] = currentplayer
@@ -122,28 +121,28 @@ while True:
 
     elif position == "4" and board[3] == "-":
         board[3] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     elif position == "5" and board[4] == "-":
         board[4] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
 
     elif position == "6" and board[5] == "-":
         board[5] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     elif position == "7" and board[6] == "-":
         board[6] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     elif position == "8" and board[7] == "-":
         board[7] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     elif position == "9" and board[8] == "-":
         board[8] = currentplayer
-        print(displayBoard())
+        displayBoard()
 
     print("")
     winner()
@@ -159,31 +158,31 @@ while True:
         break
     elif position == "1" and  board[0] == "-":
         board[0] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "2" and board[1] == "-":
         board[1] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "3" and board[2] == "-":
         board[2] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "4" and board[3] == "-":
         board[3] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "5" and board[4] == "-":
         board[4] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "6" and board[5] == "-":
         board[5] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "7" and board[6] == "-":
         board[6] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "8" and board[7] == "-":
         board[7] = player
-        print(displayBoard())
+        displayBoard()
     elif position == "9" and board[8] == "-":
         board[8] = player
-        print(displayBoard())
+        displayBoard()
 
     print("")
     winner()
@@ -193,5 +192,4 @@ while True:
         break
     elif "-" not in board:
         break
-
 
