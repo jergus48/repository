@@ -5,49 +5,50 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 PATH="C:\Program Files (x86)\chromedriver.exe"
 driver= webdriver.Chrome(PATH)
-driver.get("https://www.supremenewyork.com/shop/all/sweatshirts")
+driver.get("https://www.supremenewyork.com/shop/all/shoes")
 
 cas=True
 while cas==True:
-    if datetime.now().strftime("%H:%M")== "12:28":
+    if datetime.now().strftime("%H:%M")== "18:58":
         cas=False
         print("start:", datetime.now().strftime("%H:%M:%S"))
         run=True
 
-
-
-
 def order():
 
-    size1=WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option[1]')))
-    size1 = size1.get_attribute('innerHTML')
-    if "Large" in size1:
-        run2=False
-        print("1")
-    if "Large" not in size1:
-        y=2
-        run2 = True
+    y=1
 
-    while run2==True:
+    while True:
+        z=y
         try:
-            size3 = WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option['+str(y)+']')))
+            size3 = WebDriverWait(driver, 2).until(
+                EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option['+str(z)+']')))
             size3 = size3.get_attribute('innerHTML')
+
             print(y)
         except:
+            driver.refresh()
             size4 = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option[1]')))
             size4.click()
             print("2e")
             break
-        if "Large" in size3:
+
+        try:
+            if "US 9 / UK 8" in size3:
+                size5 = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option[' + str(z) + ']')))
+                size5.click()
+                print("1e")
+                break
+        except:
             size5 = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option[' + str(y) + ']')))
+                EC.presence_of_element_located((By.XPATH, '//*[@id="size"]/option[' + str(z) + ']')))
             size5.click()
-            print("1e")
+            print("1e2")
             break
-        if "Large" not in size3:
+
+        if "US 9 / UK 8" not in size3:
             y+=1
 
 
@@ -106,22 +107,26 @@ def order():
     print("end:", datetime.now().strftime("%H:%M:%S"))
 
 
-
-
-
-
 if run==True:
     driver.refresh()
-    driver.find_element_by_xpath('//*[@id="container"]/article[1]/div/p/a').click()
-    farba=WebDriverWait(driver,10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="details"]/p[1]')))
-    farba=farba.get_attribute('innerHTML')
-    print(farba)
-    if "Black" in farba:
-        order()
-    x=1
+    while True:
+        try:
+            driver.find_element_by_xpath('//*[@id="container"]/article[1]/div/p/a').click()
+            farba=WebDriverWait(driver,10).until(
+                EC.presence_of_element_located((By.XPATH, '//*[@id="details"]/p[1]')))
+            farba=farba.get_attribute('innerHTML')
+            print(farba)
+            if "Blue" in farba:
+                order()
+                break
+            if "Blue" not in farba:
+                break
 
-    while "Black" not in farba:
+        except:
+            driver.refresh()
+
+    x = 1
+    while "Blue" not in farba:
         x+=1
         try:
             colour2 = WebDriverWait(driver, 5).until(
@@ -135,18 +140,8 @@ if run==True:
         except:
             order()
             break
-        if "Black" in farba:
+        if "Blue" in farba:
             order()
-
-
-
-#//*[@id="details"]/ul/li[2]/button
-#//*[@id="details"]/p[1]
-
-
-#main=WebDriverWait(driver,10).until(
-#        EC.presence_of_element_located((By.LINK_TEXT, "next t-shirt >")))
-#    main.click()
 
 
 
